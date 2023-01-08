@@ -48,7 +48,7 @@ export class Game extends React.Component <{}, {stepNumber:number, history:any, 
           'To the start'
         return (
           <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+            <button className='w-full m-1 p-1 bg-blue-500 text-white'  onClick={() => this.jumpTo(move)}>{desc}</button>
           </li>
         )
       })
@@ -57,17 +57,20 @@ export class Game extends React.Component <{}, {stepNumber:number, history:any, 
       if(winner) status = 'Winner is ' + winner
 
       return (
-        <div className="game">
-          <div className="game-board">
+        
+        <div className='bg-gray-900 h-screen w-screen flex flex-wrap content-start'>
+          <h1 className='text-center text-yellow-500 text-5xl w-full m-5 my-20'>tic-tac-toe</h1>
+          <div className=' w-1/4 text-center text-white text-xl p-3'>{status}</div>
+          <div className="p-2 m-0 w-1/2">
             <Board 
               squares={current.squares}
               onClick={(i:number) => this.handleClick(i)}
             />
           </div>
-          <div className="game-info">
-            <div>{status}</div>
-            <ol>{moves}</ol>
+          <div className=" w-1/4 text-center text-white text-xl p-3">
+            <ol className='w-4/5'>{moves}</ol>
           </div>
+          
         </div>
       );
     }
